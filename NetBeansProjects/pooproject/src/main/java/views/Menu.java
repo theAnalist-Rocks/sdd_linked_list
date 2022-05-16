@@ -21,6 +21,12 @@ public class Menu {
         System.out.println("2. Lister les enseignants");
         System.out.println("3. Lister les enseignements");
         System.out.println("4. Lister les classes de l'établissement");
-        System.out.println("5. Faire une évaluation");
+        System.out.println("5. Ajouter un nouveau");
+        System.out.println("6. Faire une évaluation");
+        System.out.println("7. Afficher les résultats");
+    }
+    
+    public void sousMenuAjouterPersonnage() {
+        System.out.printf("%10s", "1. Ajouter un élève");
     }
 }
