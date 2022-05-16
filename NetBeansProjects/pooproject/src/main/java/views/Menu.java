@@ -1,0 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package views;
+
+/**
+ *
+ * @author junior
+ */
+public class Menu {
+    public Menu() {
+        
+    }
+    
+    public static void main(String[] argv) {
+        System.out.println("BIENVENUE DANS LE PROGRAMME DE GESTION DE NOTES");
+        System.out.println("Note: Ceci est un menu interactif. Faites votre choix en choisissant seulement un numéro");
+        
+        System.out.println("1. Lister les élèves");
+        System.out.println("2. Lister les enseignants");
+        System.out.println("3. Lister les enseignements");
+        System.out.println("4. Lister les classes de l'établissement");
+        System.out.println("5. Faire une évaluation");
+    }
+}
