@@ -22,7 +22,7 @@ public class Note {
     public Note(Eleve eleve, Evaluation evaluation, float valeur) {
         this.eleve = eleve;
         this.evaluation = evaluation;
-        setValue(value);
+        this.value = valeur;
         this.eleve.addEvaluation(evaluation);
         this.evaluation.setNote(this);
     }
@@ -42,7 +42,7 @@ public class Note {
     }
     
     public float getValue() {
-        return this.value;
+        return this.value * evaluation.getEnseignement().getCoefficient();
     }
     
     public Eleve getEleve() {

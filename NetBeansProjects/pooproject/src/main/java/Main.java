@@ -57,11 +57,11 @@ public class Main {
         Matiere.showAll();
         System.out.println("Liste des Cours dans l\'établissement");*/
         Cours.showAll();
-        System.out.println("Liste des évaluations en Anglais: \n");
-        System.out.println(p.getEvaluationByEnseignement(eleve, enseignement2));
+        System.out.println("Liste des évaluations en Maths: \n");
+        System.out.println(p.getEvaluationByEnseignement(eleve, enseignement));
                 
-        System.out.println("La moyenne en anglais de Hamede:\n");
-        System.out.println(p.moyenne(eleve, enseignement2));
+        System.out.println("La moyenne en Maths de Hamede:\n");
+        System.out.println(p.moyenne(eleve, enseignement));
         
     }
     
