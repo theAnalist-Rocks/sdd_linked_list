@@ -109,4 +109,8 @@ public class Eleve extends Personne {
         return this.listeDesNotes;
     }
     
+    public List<Evaluation> getEvaluation() {
+        return this.listeDesEvaluations;
+    }
+    
 }

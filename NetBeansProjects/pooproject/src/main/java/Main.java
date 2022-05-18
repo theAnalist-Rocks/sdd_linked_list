@@ -20,6 +20,7 @@ public class Main {
         Classe classe = Classe.getClasse("A", 6);
         Cours cours = new Cours(prof1, enseignement, classe);
         Cours cours2 = new Cours(prof1, enseignement2, classe);
+        Evaluation eva = new Evaluation();
         
         System.out.println("Cours2: " + cours2.getLibelle());
         /*System.out.println(classe);

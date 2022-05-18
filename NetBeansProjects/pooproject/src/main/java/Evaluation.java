@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -15,6 +19,14 @@ public class Evaluation {
     private Date date;
     private String type;
     private Enseignement enseignement;
+    private Note note;
+    private TypeEvaluation typeEvaluation;
+    private static List<Evaluation> listeEvaluations = new ArrayList<>();
+    private static List<TypeEvaluation> listeTypeEvaluation;
+    
+    static {
+        listeTypeEvaluation = TypeEvaluation.getListe();
+    }
     
     public Evaluation() {
         
@@ -36,8 +48,12 @@ public class Evaluation {
         this.cours = cours;
         this.enseignement = enseignement;
         this.period = periode;
+        add(this);
     }
     
+    public static void add(Evaluation e) {
+        listeEvaluations.add(e);
+    }
     
     /*getters et setter*/
     public Enseignant getEnseignant() {
@@ -58,6 +74,10 @@ public class Evaluation {
     
     public void setType(String type) {
         this.type = type;
+    }
+    
+    public void setTypeEvaluation(TypeEvaluation tEva) {
+        this.typeEvaluation = tEva;
     }
     
     public void setEnseignement(Enseignement enseignement) {
@@ -92,4 +112,56 @@ public class Evaluation {
         return this.period;
     }
     
+    public void setNote(Note note) {
+        this.note = note;
+    }
+    
+    public Note getNote() {
+        return this.note;
+    }
+    
+    public TypeEvaluation getTypeEvaluation() {
+        return typeEvaluation;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Float.floatToIntBits(this.bareme);
+        hash = 97 * hash + Objects.hashCode(this.date);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Evaluation other = (Evaluation) obj;
+        if (Float.floatToIntBits(this.bareme) != Float.floatToIntBits(other.bareme)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (!Objects.equals(this.cours, other.cours)) {
+            return false;
+        }
+        if (!Objects.equals(this.period, other.period)) {
+            return false;
+        }
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        if (!Objects.equals(this.enseignement, other.enseignement)) {
+            return false;
+        }
+        return Objects.equals(this.note, other.note);
+    }
 }

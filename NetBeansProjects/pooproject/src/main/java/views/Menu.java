@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package views;
+import java.util.Scanner;
 
 /**
  *
@@ -28,5 +29,13 @@ public class Menu {
     
     public void sousMenuAjouterPersonnage() {
         System.out.printf("%10s", "1. Ajouter un élève");
+        System.out.printf("%10s", "2. Ajouter un enseignant");
+    }
+    
+    public void menuEvaluation() {
+        do {
+            System.out.printf("%10s", "2. Ajouter un élève");
+        }
+        while(true);
     }
 }

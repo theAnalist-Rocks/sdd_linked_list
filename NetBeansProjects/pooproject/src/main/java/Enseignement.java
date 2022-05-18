@@ -58,6 +58,10 @@ public class Enseignement {
             System.out.println(ens.getLibelle());
         }
     }
+    
+    public void getMoyenne(Eleve e, Periode p) {
+        
+    }
 /*    public static Enseignement getEnseignement(Enseignement enseignement) {
         for (Enseignement _enseignement: listeEnseignement) {
             if(true) {
