@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Evaluation {
     private Cours cours;
     private Periode period;
-    private float bareme; /* si sur 5 alors 1/2, si sur 10 alors 1, si sur 20 alors 2 ... etc ... */
+    private float bareme; /* suivant le poids de l'évaluation  ... */
     private Date date;
     private String type;
     private Enseignement enseignement;

@@ -79,8 +79,17 @@ public class Eleve extends Personne {
         return this.idCard;
     }
     
-    public List getCours() {
+    public List<Cours> getCours() {
         return this.listeDesCours;
+    }
+    
+    /* liste des enseignements */
+    public List<Enseignement> getEnseignements() {
+        List<Enseignement> listeEnseignements = new ArrayList<>();
+        for(Cours c: getCours()) {
+            listeEnseignements.add(c.getEnseignement());
+        }
+        return listeEnseignements;
     }
     
     public void getNotes() {

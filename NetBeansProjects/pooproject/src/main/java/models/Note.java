@@ -19,7 +19,7 @@ public class Note {
     public Note(Eleve eleve, Evaluation evaluation, float valeur) {
         this.eleve = eleve;
         this.evaluation = evaluation;
-        this.value = valeur;
+        setValue(value);
     }
     
     /** accesseurs
@@ -33,8 +33,7 @@ public class Note {
     }
     
     public void setValue(float value) {
-        /* valeurs sont par défaut /10 */
-        this.value = evaluation.getBareme() * value;
+        this.value = evaluation.getEnseignement().getCoefficient() * value;
     }
     
     public float getValue() {
