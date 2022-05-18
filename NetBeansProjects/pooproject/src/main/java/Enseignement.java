@@ -4,6 +4,7 @@
  */
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -69,4 +70,34 @@ public class Enseignement {
             }
         }
     }*/
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Float.floatToIntBits(this.coefficient);
+        hash = 97 * hash + Objects.hashCode(this.niveau);
+        hash = 97 * hash + Objects.hashCode(this.matiere);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Enseignement other = (Enseignement) obj;
+        if (Float.floatToIntBits(this.coefficient) != Float.floatToIntBits(other.coefficient)) {
+            return false;
+        }
+        if (!Objects.equals(this.niveau, other.niveau)) {
+            return false;
+        }
+        return Objects.equals(this.matiere, other.matiere);
+    }
 }

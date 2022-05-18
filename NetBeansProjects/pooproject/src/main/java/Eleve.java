@@ -46,17 +46,6 @@ public class Eleve extends Personne {
         this.listeDesCours.add(new Cours(enseignant, enseignement, this.classe));
     }
     
-    public void addCours(Cours cours) {
-        this.listeDesCours.add(cours);
-    }
-    
-    public static void add(Eleve eleve) {
-        listeDesEleve.add(eleve);
-    }
-    
-    public static void remove(Eleve eleve) {
-        listeDesEleve.remove(eleve);
-    }
     
     public void removeCours(Enseignement enseignement, Enseignant enseignant) {
         int index = 0;
@@ -66,6 +55,14 @@ public class Eleve extends Personne {
             }
             index ++;
         }
+    }
+    
+    public void addEvaluation(Evaluation eval) {
+        this.listeDesEvaluations.add(eval);
+    }
+    
+    public void removeEvaluation(Evaluation eval) {
+        listeDesEvaluations.remove(eval);
     }
     
     
@@ -120,6 +117,19 @@ public class Eleve extends Personne {
     
     public List<Evaluation> getEvaluation() {
         return this.listeDesEvaluations;
+    }
+    
+    /* méthodes de classe */
+    public void addCours(Cours cours) {
+        this.listeDesCours.add(cours);
+    }
+    
+    public static void add(Eleve eleve) {
+        listeDesEleve.add(eleve);
+    }
+    
+    public static void remove(Eleve eleve) {
+        listeDesEleve.remove(eleve);
     }
     
 }

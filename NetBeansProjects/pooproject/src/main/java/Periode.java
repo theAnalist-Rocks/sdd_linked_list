@@ -78,6 +78,7 @@ public class Periode {
         if(checkWeights(e, ens)) {
             for(Evaluation eval: getEvaluationByEnseignement(e, ens)) {
                 moyenne += eval.getNote().getValue() * eval.getBareme();
+                System.out.println("La moyenne: " + eval.getNote());
                 nbEval ++;
             }
             return moyenne;

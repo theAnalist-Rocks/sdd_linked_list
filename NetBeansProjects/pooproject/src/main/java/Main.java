@@ -30,6 +30,7 @@ public class Main {
         Evaluation evalMaths = new Evaluation("Test - Maths 1", (float) 0.4, enseignement, cours, p);
         Evaluation evalMaths2 = new Evaluation("Test - Maths 2", (float) 0.6, enseignement, cours, p);
         
+        
         Note note1math = new Note(eleve, evalMaths2, 15);
         Note note2Amth = new Note(eleve, evalMaths, 20);
         Note note1Ang = new Note(eleve, eval, 10);
@@ -57,7 +58,7 @@ public class Main {
         System.out.println("Liste des Cours dans l\'établissement");*/
         Cours.showAll();
         System.out.println("Liste des évaluations en Anglais: \n");
-        System.out.println(p.getEvaluationByEnseignement(eleve, enseignement));
+        System.out.println(p.getEvaluationByEnseignement(eleve, enseignement2));
                 
         System.out.println("La moyenne en anglais de Hamede:\n");
         System.out.println(p.moyenne(eleve, enseignement2));

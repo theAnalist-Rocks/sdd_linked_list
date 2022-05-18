@@ -2,12 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controllers;
+package views;
+import model
+        
 
 /**
  *
  * @author junior
  */
-public class EleveController {
-
+public class EleveReleveView {
+    
+    public EleveReleveView() {
+        
+    }
+    
+    public void getReleve(Eleve e) {
+        
+    }
+    
 }
