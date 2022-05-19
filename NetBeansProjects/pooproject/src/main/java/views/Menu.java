@@ -4,17 +4,18 @@
  */
 package views;
 import java.util.Scanner;
+import models.Evaluation;
+import models.Main;
+import models.Classe;
 
 /**
  *
  * @author junior
  */
 public class Menu {
-    public Menu() {
-        
-    }
-    
     public static void main(String[] argv) {
-       
+       new Main();
+       System.out.println(Classe.listeClasse);
+       Evaluate evaluation = new Evaluate();
     }
 }

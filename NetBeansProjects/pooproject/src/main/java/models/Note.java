@@ -23,8 +23,8 @@ public class Note {
         this.eleve = eleve;
         this.evaluation = evaluation;
         this.value = valeur;
-        this.eleve.addEvaluation(evaluation);
         this.evaluation.setNote(this);
+        this.eleve.addEvaluation(evaluation);   
     }
     
     /** accesseurs

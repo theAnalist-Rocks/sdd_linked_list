@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Random;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
  */
 public class Classe {
     public static final List<Classe> listeClasse = new ArrayList<>();
+    public int idClasse;
     public String subdivision;
     public Niveau niveau;
     public List<Eleve> listeEleve = new ArrayList<>();
@@ -40,29 +42,16 @@ public class Classe {
         this.niveau = niveau;
     }
     
+    public Classe(String subdivision, Niveau niveau, int code) {
+        this.subdivision = subdivision;
+        this.niveau = niveau;
+        this.idClasse = code;
+    }
+    
     public Classe(Niveau niveau) {
         this.niveau = niveau;
     }
     
-    public void setSubdivision(String subdivision) {
-        this.subdivision = subdivision;
-    }
-    
-    public void setNiveau(Niveau niveau) {
-        this.niveau = niveau;
-    }
-    
-    public String getSubdivision() {
-        return this.subdivision;
-    }
-    
-    public Niveau getNiveau() {
-        return this.niveau;
-    }
-    
-    public String getLibelle() {
-        return this.niveau.label + ' ' + this.subdivision;
-    }
     
     public static void addSubdivision(Classe c) {
         Pattern p = Pattern.compile("[A-Z]", Pattern.CASE_INSENSITIVE);
@@ -100,6 +89,10 @@ public class Classe {
         this.listeCours.add(cours);
     }
     
+    public void removeCours(Cours cours) {
+        this.listeCours.remove(cours);
+    }
+    
     public static void delete(Classe classe) {
         listeClasse.remove(classe);
     }
@@ -115,8 +108,57 @@ public class Classe {
         return null;
     }
     
+    public static Classe getClasse(int code) {
+        for(Classe classe: listeClasse) {
+            if(classe.idClasse == code) 
+                return classe;
+        }
+        return null;
+    }
+    
     public void addEleve(Eleve eleve) {
+        eleve.setClasse(this);
+        eleve.setCours(listeCours);
         this.listeEleve.add(eleve);
+    }
+      
+    public static void afficherClasses() {
+        System.out.println("Liste des Classes: ");
+        for (Classe classe:listeClasse){
+            System.out.println(classe);
+        }
+    }
+    
+     public void setSubdivision(String subdivision) {
+        this.subdivision = subdivision;
+    }
+    
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
+    
+    public String getSubdivision() {
+        return this.subdivision;
+    }
+    
+    public Niveau getNiveau() {
+        return this.niveau;
+    }
+    
+    public String getLibelle() {
+        return this.niveau.label + ' ' + this.subdivision;
+    }
+    
+    public void setCode(int code) {
+        this.idClasse = code;
+    }
+    
+    public int getCode() {
+        return idClasse;
+    }
+    
+    public List<Cours> getCours(){
+        return this.listeCours;
     }
     
     public void getEleve() {
@@ -125,13 +167,9 @@ public class Classe {
             System.out.println(eleve.nom + ' ' + eleve.prenom);
         }
     }
-      
     
-    public static void afficherClasses() {
-        System.out.println("Liste des Classes: ");
-        for (Classe classe:listeClasse){
-            System.out.println(classe);
-        }
+    public List<Eleve> getEleves(){
+        return this.listeEleve;
     }
 
     @Override

@@ -6,6 +6,7 @@ package models;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 
 /**
@@ -16,6 +17,7 @@ public class Cours {
     protected Enseignant enseignant;
     public Enseignement enseignement;
     public Classe classe;
+    public int codeCours;
     private final static List<Cours> listeDesCours = new ArrayList<>();
     
     static {
@@ -29,12 +31,23 @@ public class Cours {
         }
     }
     
+    public Cours(Enseignant enseignant, Enseignement enseignement, Classe classe, int code) {
+        this.enseignant = enseignant;
+        this.classe = classe;
+        this.enseignement = enseignement;
+        this.codeCours = code;
+        add(this);
+        this.classe.addCours(this);
+    }
+    
     
     public Cours(Enseignant enseignant, Enseignement enseignement, Classe classe) {
         this.enseignant = enseignant;
         this.classe = classe;
         this.enseignement = enseignement;
+        this.codeCours = new Random().nextInt(10000);
         add(this);
+        this.classe.addCours(this);
     }
     
     public static void add(Cours cours) {
@@ -48,7 +61,56 @@ public class Cours {
     public static void remove(Cours cours) {
         listeDesCours.remove(cours);
     }
+    
+    public static Cours getCours(int code) {
+        for(Cours c: listeDesCours) {
+            if(c.codeCours == code)
+                return c;
+        }
+        return null;
+    }
+    
+    public static void showAll() {
+        for(Cours cours: listeDesCours) {
+            System.out.println(cours.getInfo());
+        }
+    }
 
+    /* setters et getters */
+    
+    public Enseignant getEnseignant() {
+        return this.enseignant;
+    }
+    
+    public Enseignement getEnseignement() {
+        return this.enseignement;
+    }
+    
+    public Classe getClasse() {
+        return this.classe;
+    }
+    
+    public void setClasse(Classe classe) {
+        this.classe = classe;
+    }
+    
+    public void setEnseignant(Enseignant enseignant) {
+        this.enseignant = enseignant;
+    }
+    
+    public void setEnseignement(Enseignement enseignement) {
+        this.enseignement = enseignement;
+    }
+    
+    public String getInfo() {
+        return this.classe.getLibelle() + ": Cours de " + this.enseignement.getLibelle() + " avec " + this.enseignant + '[' + this.codeCours + ']';
+    }
+    
+    public String getLibelle() {
+        return this.classe.getLibelle() + ": " + this.enseignement.getLibelle();
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -79,43 +141,4 @@ public class Cours {
         return Objects.equals(this.classe, other.classe);
     }
     
-    /* setters et getters */
-    
-    public Enseignant getEnseignant() {
-        return this.enseignant;
-    }
-    
-    public Enseignement getEnseignement() {
-        return this.enseignement;
-    }
-    
-    public Classe getClasse() {
-        return this.classe;
-    }
-    
-    public void setClasse(Classe classe) {
-        this.classe = classe;
-    }
-    
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
-    }
-    
-    public void setEnseignement(Enseignement enseignement) {
-        this.enseignement = enseignement;
-    }
-    
-    public String getInfo() {
-        return this.classe.getLibelle() + ": " + this.enseignant + " intervient dans " + this.enseignement.getLibelle();
-    }
-    
-    public String getLibelle() {
-        return this.classe.getLibelle() + ": " + this.enseignement.getLibelle();
-    }
-    
-    public static void showAll() {
-        for(Cours cours: listeDesCours) {
-            System.out.println(cours.getInfo());
-        }
-    }
 }

@@ -79,7 +79,7 @@ public class Periode {
         if(checkWeights(e, ens)) {
             for(Evaluation eval: getEvaluationByEnseignement(e, ens)) {
                 moyenne += eval.getNote().getValue() * eval.getBareme();
-                System.out.println("La note obtenue: " + eval.getNote().getValue());
+                System.out.println("La note obtenue: " + eval.getNote().getValue() + "/" + ens.getCoefficient()*20);
                 nbEval ++;
             }
             /* on le ramène sur 20 */
@@ -94,10 +94,12 @@ public class Periode {
     /* avoir la moyenne générale pour la période */
     public float moyenne(Eleve e) {
         float moyenne = 0;
+        int nbEnseignements = 0;
         for(Enseignement ens: e.getEnseignements()) {
             moyenne += moyenne(e, ens);
+            nbEnseignements ++;
         }
-        return moyenne;
+        return moyenne / nbEnseignements;
     }
     
     @Override
