@@ -174,7 +174,7 @@ public class Classe {
 
     @Override
     public String toString() {
-        return "Nom: " + this.getLibelle();
+        return "classe " + this.getLibelle();
     }
     
 }

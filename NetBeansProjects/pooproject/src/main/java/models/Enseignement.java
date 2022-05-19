@@ -39,6 +39,10 @@ public class Enseignement {
         return this.niveau;
     }
     
+    public Matiere getMatiere() {
+        return this.matiere;
+    }
+    
     public float getCoefficient() {
         return this.coefficient;
     }

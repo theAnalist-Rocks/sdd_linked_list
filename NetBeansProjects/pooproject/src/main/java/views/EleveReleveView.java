@@ -9,14 +9,31 @@ import models.*;
  *
  * @author junior
  */
-public class EleveReleveView {
+public final class EleveReleveView {
     
-    public EleveReleveView() {
-        
+    public EleveReleveView(Classe c, Periode p) {
+        getReleve(c, p);
     }
     
-    public void getReleve(Eleve e) {
-        
+    public void getReleve(Classe c, Periode p) {
+        System.out.println("Classe : " + c);
+        for(Eleve e: c.getEleves()) {
+            getReleve(e, p);
+        }
+    }
+    
+    public void getReleve(Eleve e, Periode p) {
+        System.out.println("BULLETIN DE NOTES DE " + e.getPersonalInfo() + " en classe de " + e.getClasse().toString() + " Période:" + p.libelle);
+        System.out.println("Les cours de l'élève: "  + e.getCours());
+        for(Cours c: e.getCours()) {
+            if (c != null) {
+                System.out.printf("%15s :", c.getEnseignement().getMatiere());
+                for(Evaluation eval: p.getEvaluationByEnseignement(e, c.getEnseignement())) {
+                    System.out.printf(" %10.2f", eval.getNote().getValue());
+                }
+                System.out.println("\n");
+            }
+        }
     }
     
 }

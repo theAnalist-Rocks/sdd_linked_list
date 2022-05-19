@@ -7,6 +7,7 @@ import java.util.Scanner;
 import models.Evaluation;
 import models.Main;
 import models.Classe;
+import models.Periode;
 
 /**
  *
@@ -15,7 +16,9 @@ import models.Classe;
 public class Menu {
     public static void main(String[] argv) {
        new Main();
-       System.out.println(Classe.listeClasse);
+       //System.out.println(Classe.listeClasse);
        Evaluate evaluation = new Evaluate();
+       new EleveReleveView(Classe.getClasse("A", 6), Periode.getPeriode("Trimestre 1"));
+        
     }
 }

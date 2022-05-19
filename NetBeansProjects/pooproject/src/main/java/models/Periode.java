@@ -17,14 +17,17 @@ public class Periode {
     public String libelle;
     public Date debut;
     public Date fin;
+    public static List<Periode> listeDesPeriodes = new ArrayList<>();
     
     public Periode() {
         start();
+        listeDesPeriodes.add(this);
     }
     
     public Periode(String libelle) {
         this.fin = new Date();
         this.libelle = libelle;
+        listeDesPeriodes.add(this);
     }
     
     public void end() {
@@ -35,9 +38,24 @@ public class Periode {
         this.debut = new Date();
     }
     
-    /* getters et setters */
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public static void add(Periode p) {
+        listeDesPeriodes.add(p);
+    }
+    
+    public static void add(String libelle) {
+        listeDesPeriodes.add(new Periode(libelle));
+    }
+    
+    public static void remove(Periode p) {
+        listeDesPeriodes.remove(p);
+    }
+    
+    public static Periode getPeriode(String libelle) {
+        for(Periode p: listeDesPeriodes) {
+            if(p.libelle.equals(libelle)) 
+                return p;
+        }
+        return null;
     }
     
     /* liste des évaluations à la période */
@@ -55,7 +73,7 @@ public class Periode {
     public List<Evaluation> getEvaluationByEnseignement(Eleve e, Enseignement enseignement) {
         List<Evaluation> listeEval = new ArrayList<>();
         for(Evaluation eval: e.getEvaluation()) {
-            if (eval.getEnseignement().equals(enseignement)) {
+            if (eval.getEnseignement().equals(enseignement) && eval.getPeriode().equals(this)) {
                 listeEval.add(eval);
             }
         }
@@ -101,6 +119,12 @@ public class Periode {
         }
         return moyenne / nbEnseignements;
     }
+    
+    /* getters et setters */
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+    
     
     @Override
     public int hashCode() {

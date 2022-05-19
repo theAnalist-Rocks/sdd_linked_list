@@ -130,4 +130,9 @@ public class Matiere {
         return Objects.equals(this.intitulle, other.intitulle);
     }
     
+    @Override
+    public String toString() {
+        return this.intitulle;
+    }
+    
 }

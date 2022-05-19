@@ -104,6 +104,15 @@ public class Eleve extends Personne {
         return null;
     }
     
+    public List<Evaluation> getEvaluation(Periode p, Enseignement ens) {
+        List<Evaluation> listeEval = new ArrayList<>();
+        for(Evaluation eval: listeDesEvaluations) {
+            if(eval.getEnseignement().equals(ens) && eval.getPeriode().equals(p))
+                listeEval.add(eval);
+        }
+        return listeEval;
+    }
+    
     public List<Note> getNote() {
         return this.listeDesNotes;
     }
