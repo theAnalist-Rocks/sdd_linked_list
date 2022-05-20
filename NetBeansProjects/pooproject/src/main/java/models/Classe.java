@@ -72,6 +72,16 @@ public class Classe {
         return count;
     }
     
+    public boolean isUnique(Cours c) {
+        int count = 0;
+        for(Cours cours: listeCours) {
+            if(c.getEnseignement().getLibelle().equals(cours.getEnseignement().getLibelle())) {
+                count ++;
+            }   
+        }
+        return count == 0;
+    }
+    
     public static void add(Classe classe) {
         int count = isUnique(classe);
         if (count == 0) {
@@ -85,8 +95,12 @@ public class Classe {
         add(c);
     }
     
+    
     public void addCours(Cours cours) {
-        this.listeCours.add(cours);
+        if (isUnique(cours)) {
+            this.listeCours.add(cours);
+        }
+            
     }
     
     public void removeCours(Cours cours) {

@@ -22,9 +22,9 @@ public class Evaluate {
         int code;
         String label;
         System.out.println("Dans quelle classee voulez-vous faire l'évaluation ?: ");
-        System.out.println("Entrez le code de la classe: ");
+        System.out.println(">>>> Entrez le code de la classe: ");
         code = scan.nextInt();
-        System.out.println("Entrez le label de la classe: ");
+        System.out.println(">>>> Entrez le label de la classe: ");
         label = scan.next();
         return Classe.getClasse(label,code);
     }
@@ -39,7 +39,7 @@ public class Evaluate {
                 System.out.println(c.getInfo());
             }
 
-            System.out.println("Votre choix: ");
+            System.out.println(">>>> Votre choix: ");
             code = scan.nextInt();
             return Cours.getCours(code);
         }
@@ -61,6 +61,7 @@ public class Evaluate {
         System.out.println("Dans quelle période êtes-vous ?: ");
         periode = scan.next();
         p = new Periode(periode);
+        System.out.println("");
         System.out.println(">>>> " + c.getInfo() + " <<<<");
         evalEachOnTeaching(classe.getEleves(), c.getEnseignement(), c, p, type);
     }
@@ -76,11 +77,11 @@ public class Evaluate {
         for(Eleve e: listeEleve) {
             System.out.println("Entrez la note pour [" + e.getPersonalInfo() + "]: ");
             value = scan.nextFloat();
-            eval = new Evaluation(type, value, ens, cours, periode);
+            eval = new Evaluation(type, poids, ens, cours, periode);
             note = new Note(e, eval, value);
         }
         
-        System.out.printf("\033[92m;SUCCESS\033[0m");
+        System.out.printf("\033[92mSUCCESS\033[0m\n");
         
     }
 }

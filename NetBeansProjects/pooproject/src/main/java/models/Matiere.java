@@ -19,7 +19,7 @@ public class Matiere {
 
     static {
         listeMatiere.add(new Matiere("Maths", "MTH"));
-        listeMatiere.add(new Matiere("Physics", "PHY"));
+        listeMatiere.add(new Matiere("Physiques", "PHY"));
         listeMatiere.add(new Matiere("Science de la terre", "SVT"));
         listeMatiere.add(new Matiere("Chimie", "CHM"));
         listeMatiere.add(new Matiere("Anglais", "ANG"));

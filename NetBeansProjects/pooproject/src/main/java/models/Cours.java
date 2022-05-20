@@ -51,6 +51,7 @@ public class Cours {
     }
     
     public static void add(Cours cours) {
+        if (isUnique(cours))
         listeDesCours.add(cours);
     }
     
@@ -75,7 +76,15 @@ public class Cours {
             System.out.println(cours.getInfo());
         }
     }
-
+    public static boolean isUnique(Cours c) {
+        int count = 0;
+        for(Cours cours: listeDesCours) {
+            if(c.equals(cours))
+                count ++;
+        }
+        return count == 0;
+    }
+    
     /* setters et getters */
     
     public Enseignant getEnseignant() {
@@ -103,7 +112,7 @@ public class Cours {
     }
     
     public String getInfo() {
-        return this.classe.getLibelle() + ": Cours de " + this.enseignement.getLibelle() + " avec " + this.enseignant + '[' + this.codeCours + ']';
+        return this.classe.getLibelle() + ": Cours de " + this.enseignement.getLibelle() + " avec " + this.enseignant + " [" + this.codeCours + ']';
     }
     
     public String getLibelle() {
@@ -139,6 +148,11 @@ public class Cours {
             return false;
         }
         return Objects.equals(this.classe, other.classe);
+    }
+    
+    @Override
+    public String toString() {
+        return this.getLibelle();
     }
     
 }

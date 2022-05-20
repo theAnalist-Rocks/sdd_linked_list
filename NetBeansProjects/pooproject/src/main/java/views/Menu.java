@@ -16,9 +16,6 @@ import models.Periode;
 public class Menu {
     public static void main(String[] argv) {
        new Main();
-       //System.out.println(Classe.listeClasse);
-       Evaluate evaluation = new Evaluate();
-       new EleveReleveView(Classe.getClasse("A", 6), Periode.getPeriode("Trimestre 1"));
-        
+       Boundle boudleMenu = new Boundle();
     }
 }

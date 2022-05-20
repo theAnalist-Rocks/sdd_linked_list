@@ -165,4 +165,9 @@ public class Evaluation {
         }
         return Objects.equals(this.note, other.note);
     }
+    
+    @Override
+    public String toString() {
+        return getType();
+    }
 }

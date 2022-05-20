@@ -29,6 +29,8 @@ public class Eleve extends Personne {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
+        this.idCard = new Random().nextInt(1000000);
+        add(this);
     }
     
     public Eleve(String nom, String prenom, int age, Classe classe) {
@@ -36,7 +38,31 @@ public class Eleve extends Personne {
         this.prenom = prenom;
         this.age = age;
         this.classe = classe;
+        this.idCard = new Random().nextInt(1000000);
+        add(this);
     }
+    
+    public static void add(Eleve eleve) {
+        listeDesEleve.add(eleve);
+    }
+    
+    public static void remove(Eleve eleve) {
+        listeDesEleve.remove(eleve);
+    }
+    
+    public static List<Eleve> getList() {
+        return listeDesEleve;
+    }
+    
+    public static Eleve getEleve(int code) {
+        for(Eleve e: listeDesEleve) {
+            if(e.getIdCard() == code) {
+                return e;
+            }
+        }
+        return null;
+    }
+     
     /* methodes 
        @methode d'ajout: 
         - Note
@@ -121,17 +147,8 @@ public class Eleve extends Personne {
         return this.listeDesEvaluations;
     }
     
-    /* méthodes de classe */
     public void addCours(Cours cours) {
         this.listeDesCours.add(cours);
-    }
-    
-    public static void add(Eleve eleve) {
-        listeDesEleve.add(eleve);
-    }
-    
-    public static void remove(Eleve eleve) {
-        listeDesEleve.remove(eleve);
     }
     
     /* getters et setters hérités de Personne */

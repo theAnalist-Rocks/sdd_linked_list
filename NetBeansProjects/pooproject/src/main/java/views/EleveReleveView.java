@@ -23,17 +23,23 @@ public final class EleveReleveView {
     }
     
     public void getReleve(Eleve e, Periode p) {
-        System.out.println("BULLETIN DE NOTES DE " + e.getPersonalInfo() + " en classe de " + e.getClasse().toString() + " Période:" + p.libelle);
-        System.out.println("Les cours de l'élève: "  + e.getCours());
+        System.out.println("\n\n        ###################################");
+        System.out.println("        ######## BULLETIN DE NOTES ########");
+        System.out.println("        ###################################\n\n");
+        System.out.println("=============================================");
+        System.out.printf("NOM: %17s \nClasse: %17s\nPériode: %17s",e.getPersonalInfo(),e.getClasse().toString(), p.libelle +'\n');
+        
+        System.out.println("=============================================");
+        System.out.printf("%10s %15s %15s\n\n", "MATIERE", "DEVOIR", "EXAMEN");
         for(Cours c: e.getCours()) {
             if (c != null) {
-                System.out.printf("%15s :", c.getEnseignement().getMatiere());
+                System.out.printf("%10s:", c.getEnseignement().getMatiere());
                 for(Evaluation eval: p.getEvaluationByEnseignement(e, c.getEnseignement())) {
-                    System.out.printf(" %10.2f", eval.getNote().getValue());
+                    System.out.printf("%15.2f", eval.getNote().getValue());
                 }
                 System.out.println("\n");
             }
         }
+        System.out.printf("%10s %30.2f\n", "MOYENNE", p.moyenne(e));
     }
-    
 }

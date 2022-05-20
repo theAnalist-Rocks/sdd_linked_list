@@ -73,6 +73,7 @@ public class Periode {
     public List<Evaluation> getEvaluationByEnseignement(Eleve e, Enseignement enseignement) {
         List<Evaluation> listeEval = new ArrayList<>();
         for(Evaluation eval: e.getEvaluation()) {
+            //System.out.println(eval.getType() + " - Periode: " + this.libelle + eval.getPeriode().libelle);
             if (eval.getEnseignement().equals(enseignement) && eval.getPeriode().equals(this)) {
                 listeEval.add(eval);
             }
@@ -84,7 +85,7 @@ public class Periode {
     public boolean checkWeights(Eleve e, Enseignement ens) {
         float poids = 0;
         for(Evaluation eval: getEvaluationByEnseignement(e, ens)) {
-            System.out.println(eval.getType());
+            //System.out.println(eval.getType());
             poids += eval.getBareme();
         }
         return poids == 1;
@@ -97,7 +98,7 @@ public class Periode {
         if(checkWeights(e, ens)) {
             for(Evaluation eval: getEvaluationByEnseignement(e, ens)) {
                 moyenne += eval.getNote().getValue() * eval.getBareme();
-                System.out.println("La note obtenue: " + eval.getNote().getValue() + "/" + ens.getCoefficient()*20);
+                //System.out.println("La note obtenue: " + eval.getNote().getValue() + "/" + ens.getCoefficient()*20);
                 nbEval ++;
             }
             /* on le ramène sur 20 */
@@ -124,13 +125,11 @@ public class Periode {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
-    
-    
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.debut);
-        hash = 41 * hash + Objects.hashCode(this.fin);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.libelle);
         return hash;
     }
 
@@ -146,13 +145,7 @@ public class Periode {
             return false;
         }
         final Periode other = (Periode) obj;
-        if (!Objects.equals(this.libelle, other.libelle)) {
-            return false;
-        }
-        if (!Objects.equals(this.debut, other.debut)) {
-            return false;
-        }
-        return Objects.equals(this.fin, other.fin);
+        return Objects.equals(this.libelle, other.libelle);
     }
     
 }
