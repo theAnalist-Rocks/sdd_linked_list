@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package views;
+import java.util.ArrayList;
+import java.util.List;
 import models.*;
 
 /**
@@ -20,6 +22,16 @@ public final class EleveReleveView {
         for(Eleve e: c.getEleves()) {
             getReleve(e, p);
         }
+    }
+    
+    
+    public List<Moyenne> getRang(Classe c, Periode p) {
+        List<Moyenne> listeDesMoyennes = new ArrayList<>();
+        for(Eleve e: c.getEleves()) {
+            listeDesMoyennes.add(new Moyenne(e, p.moyenne(e)));
+        }
+        
+        return listeDesMoyennes;
     }
     
     public void getReleve(Eleve e, Periode p) {

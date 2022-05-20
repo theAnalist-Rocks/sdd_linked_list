@@ -1,6 +1,7 @@
 package models;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Random;
@@ -23,8 +24,8 @@ public class Classe {
     public List<Eleve> listeEleve = new ArrayList<>();
     public List<Cours> listeCours = new ArrayList<>();
     //public final List<Char> sudbivisions = new ArrayList<>();
-    
-    static {
+
+        static {
         Classe.add("A", 6);
         Classe.add("B", 6);
         Classe.add("A", 5);
@@ -72,15 +73,6 @@ public class Classe {
         return count;
     }
     
-    public boolean isUnique(Cours c) {
-        int count = 0;
-        for(Cours cours: listeCours) {
-            if(c.getEnseignement().getLibelle().equals(cours.getEnseignement().getLibelle())) {
-                count ++;
-            }   
-        }
-        return count == 0;
-    }
     
     public static void add(Classe classe) {
         int count = isUnique(classe);
@@ -93,18 +85,6 @@ public class Classe {
         /*Vérifier l'unicité*/
         Classe c = new Classe(subdivision, Niveau.get(numeroNiveau));
         add(c);
-    }
-    
-    
-    public void addCours(Cours cours) {
-        if (isUnique(cours)) {
-            this.listeCours.add(cours);
-        }
-            
-    }
-    
-    public void removeCours(Cours cours) {
-        this.listeCours.remove(cours);
     }
     
     public static void delete(Classe classe) {
@@ -130,17 +110,40 @@ public class Classe {
         return null;
     }
     
-    public void addEleve(Eleve eleve) {
-        eleve.setClasse(this);
-        eleve.setCours(listeCours);
-        this.listeEleve.add(eleve);
-    }
-      
     public static void afficherClasses() {
         System.out.println("Liste des Classes: ");
         for (Classe classe:listeClasse){
             System.out.println(classe);
         }
+    }
+    
+    
+    public boolean isUnique(Cours c) {
+        int count = 0;
+        for(Cours cours: listeCours) {
+            if(c.getEnseignement().getLibelle().equals(cours.getEnseignement().getLibelle())) {
+                count ++;
+            }   
+        }
+        return count == 0;
+    }
+    
+    
+    public void addCours(Cours cours) {
+        if (isUnique(cours)) {
+            this.listeCours.add(cours);
+        }
+            
+    }
+    
+    public void removeCours(Cours cours) {
+        this.listeCours.remove(cours);
+    }
+    
+    public void addEleve(Eleve eleve) {
+        eleve.setClasse(this);
+        eleve.setCours(listeCours);
+        this.listeEleve.add(eleve);
     }
     
      public void setSubdivision(String subdivision) {
@@ -190,5 +193,41 @@ public class Classe {
     public String toString() {
         return "classe " + this.getLibelle();
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.subdivision);
+        hash = 79 * hash + Objects.hashCode(this.niveau);
+        hash = 79 * hash + Objects.hashCode(this.listeEleve);
+        hash = 79 * hash + Objects.hashCode(this.listeCours);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Classe other = (Classe) obj;
+        if (!Objects.equals(this.subdivision, other.subdivision)) {
+            return false;
+        }
+        if (!Objects.equals(this.niveau, other.niveau)) {
+            return false;
+        }
+        if (!Objects.equals(this.listeEleve, other.listeEleve)) {
+            return false;
+        }
+        return Objects.equals(this.listeCours, other.listeCours);
+    }
+    
+
     
 }

@@ -97,7 +97,8 @@ public class Boundle {
                     System.out.printf("%10d - %20s\n", 1, "Créer une classe");
                     System.out.printf("%10d - %20s\n", 2, "Supprimer une classe");
                     System.out.printf("%10d - %20s\n", 3, "Faire une évaluation");
-                    System.out.printf("%10d - %20s\n",4 , "Afficher tout");
+                    System.out.printf("%10d - %20s\n",4 , "Ajouter un élève");
+                    System.out.printf("%10d - %20s\n", 5, "Afficher tout");
                     choiceIn = scan.nextInt();
                     
                     switch(choiceIn) {
@@ -112,6 +113,21 @@ public class Boundle {
                             new Evaluate();
                             break;
                         case 4:
+                            System.out.println("Ouverture de la ligne de commande interactive ... \n\n");
+                            System.out.println("Liste des élèves de la classe de 6e A par défaut");
+                            EleveView view = new EleveView();
+                            int cardId; 
+                            
+                            view.showAll();
+                            System.out.println("Quel élève avez-vous choisi ?(Choisir juste le numéro de carte): ");
+                            cardId = scan.nextInt();
+                            Eleve eleve = view.selectEleve(cardId);
+                            view.setClasse(Classe.getClasse("A", 6), eleve);
+                            System.out.println("L'élève a bien été ajouté\n\n");
+                            
+                            break;
+                        
+                        case 5:
                             System.out.println("Not ready yet!");
                     }
             }
