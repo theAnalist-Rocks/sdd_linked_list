@@ -16,6 +16,9 @@ import models.Periode;
 public class Menu {
     public static void main(String[] argv) {
        new Main();
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("|          " + "GESTION DES NOTES - LA REVELATION" + "               |");
+        System.out.println("-----------------------------------------------------------");
        Boundle boudleMenu = new Boundle();
     }
 }

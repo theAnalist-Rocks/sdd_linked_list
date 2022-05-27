@@ -46,8 +46,24 @@ public class Main {
         classe.addCours(cours);
         classe.addCours(cours2);
         classe.addEleve(eleve);
+        classe.addEleve(new Eleve("ADENYO", "Junior", 19));
+        classe.addEleve(new Eleve("ADENYO", "Michel", 19));
+        classe.addEleve(new Eleve("NAYO", "Philipe", 19));
+        /*classe.addEleve(new Eleve("AMEGANVI", "Philomène", 19));
+        classe.addEleve(new Eleve("YOVO", "Amèvi", 19));
+        classe.addEleve(new Eleve("KOMBEDE", "Magloire", 19));
+        classe.addEleve(new Eleve("MITCHUM", "Michelle", 19));
+        classe.addEleve(new Eleve("KRUGENSTEIN", "Yvone", 20));
+        classe.addEleve(new Eleve("BENISSAN-ADODJISSI", "Winner", 19));
+        classe.addEleve(new Eleve("ATTITSOGBE", "Daniel", 19));
+        classe.addEleve(new Eleve("ATTITSO", "Emilie", 19));
+        classe.addEleve(new Eleve("AGBOVI", "Rodolphe", 20));
+        classe.addEleve(new Eleve("NAYO", "Philipine", 19));
+        classe.addEleve(new Eleve("OURO-BANGN'A", "Ridoine", 19));
+        classe.addEleve(new Eleve("AGBEKOSSI", "Junior", 19));
+        classe.addEleve(new Eleve("WILSON", "Joseph", 19));*/
         
-        Evaluation eval = new Evaluation("Devoir - Angalais 1", (float) 0.4, enseignement2, cours2, p);
+        /*Evaluation eval = new Evaluation("Devoir - Angalais 1", (float) 0.4, enseignement2, cours2, p);
         Evaluation eval2 = new Evaluation("Examen - Angalais 2", (float) 0.6, enseignement2, cours2, p);
         
         Evaluation evalMaths = new Evaluation("Devoir - Maths 1", (float) 0.4, enseignement, cours, p);
@@ -57,7 +73,7 @@ public class Main {
         Note note1math = new Note(eleve, evalMaths2, 15);
         Note note2Amth = new Note(eleve, evalMaths, 20);
         Note note1Ang = new Note(eleve, eval, 10);
-        Note note2Ang = new Note(eleve, eval2, 20);
+        Note note2Ang = new Note(eleve, eval2, 20);*/
         
     }
     
